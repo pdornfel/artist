@@ -9,10 +9,20 @@
 <body>
 
 <% if current_user %>
-	<h2><%= link_to "Sign out", destroy_user_session_path, method: 'delete' %></h2>
+	<h2 style='display:inline;padding:10px'>
+		<%= link_to "Sign out", destroy_user_session_path, method: 'delete' %>
+		<%= link_to "Control Panel", users_path %>
+	</h2>
 <% elsif current_admin %>
-	<h2><%= link_to "Sign out", destroy_admin_session_path, method: 'delete' %></h2>
+	<h2 style='display:inline;padding:10px'>
+		<%= link_to "Sign out", destroy_admin_session_path, method: 'delete' %>
+		<%= link_to("Control Panel", admins_path, html_options = {style: 'position:absolute;right:150px'}) %>
+	</h2>
 <% end %>
+
+<h2 style='display:inline;padding:10px'>
+	<%= link_to "Home", root_path %>
+</h2>
 
 <% flash.each do |name, msg| %>
 	<%= content_tag :div, msg, class: "alert alert-info" %>

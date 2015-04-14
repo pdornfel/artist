@@ -1,1 +1,15 @@
 <h3>Admin Stuff - like create new admins and send invites and stuff</h3>
+
+
+<%= form_tag(send_invite_admins_path, method: 'post') do %>
+	<%= label_tag "Invitee Name" %>
+	<%= text_field_tag :name %>
+	<br>
+
+	<%= label_tag "Invitee Email" %>
+	<%= text_field_tag :email %>
+	<br>
+
+	<%= submit_tag "Submit" %>
+	<br>
+<% end %>

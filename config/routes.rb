@@ -6,7 +6,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users
-  resources :admins
+  resources :admins do
+    collection do
+      post 'send_invite'
+    end
+  end
 
   devise_scope :user do
     get "login", to: "devise/sessions#new"
