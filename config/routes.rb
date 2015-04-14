@@ -1,4 +1,22 @@
 Rails.application.routes.draw do
+
+  root to: 'homes#index'
+
+  devise_for :admins, controllers: { sessions: "admins/sessions" }
+  devise_for :users
+
+  resources :users
+  resources :admins
+
+  devise_scope :user do
+    get "login", to: "devise/sessions#new"
+  end
+
+
+  # devise_scope :admin do
+    # get 'super-secret-login', to: ""
+  # end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
